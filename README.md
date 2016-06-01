@@ -7,11 +7,11 @@
 [Apk下载](http://fir.im/41ud)
 
 
-致谢
-[JakeWharton](https://github.com/JakeWharton)
-[扔物线](https://github.com/rengwuxian)
-[xcc3641](https://github.com/xcc3641)
-[lsxiao](https://github.com/lsxiao)
-[IT-eBooks-API.info](http://it-ebooks-api.info/)  
+致谢<br/>
+[JakeWharton](https://github.com/JakeWharton)<br/>
+[扔物线](https://github.com/rengwuxian)<br/>
+[xcc3641](https://github.com/xcc3641)<br/>
+[lsxiao](https://github.com/lsxiao)<br/>
+[IT-eBooks-API.info](http://it-ebooks-api.info/)<br/>
 
 
