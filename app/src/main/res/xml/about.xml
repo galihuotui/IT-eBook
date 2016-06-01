@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/app_name">
+        <Preference
+            android:key="@string/introduction_key"
+            android:title="@string/introduction_title"
+            android:summary="@string/introduction_value"/>
+        />
+        <Preference
+            android:key="@string/author_key"
+            android:title="@string/author_title"
+            android:summary="@string/author_value"/>
+        />
+        <Preference
+            android:key="@string/current_version_key"
+            android:title="@string/current_version_title"
+            />
+        />
+        <Preference
+            android:key="@string/share_key"
+            android:title="@string/share_title"
+            />
+        />
+        <Preference
+            android:key="@string/github_key"
+            android:title="@string/github_title"
+            android:summary="@string/github_value"/>
+        />
+        <Preference
+            android:key="@string/sina_weibo_key"
+            android:title="@string/sina_weibo_title"
+            android:summary="@string/sina_weibo_value"/>
+        />
+        <Preference
+            android:key="@string/email_key"
+            android:title="@string/email_title"
+            android:summary="@string/email_value"/>
+        />
+    </PreferenceCategory>
+</PreferenceScreen>

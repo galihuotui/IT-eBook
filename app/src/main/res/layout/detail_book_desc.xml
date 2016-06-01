@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/book_description"
+        android:id="@+id/book_description_key"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/book_description_value"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/book_description_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Put your ActionScript 3 skills to work building mobile apps. This book shows you how to develop native applications for Android-based smartphones and tablets from the ground up, using Adobe AIR. You learn the entire development process hands-on, from coding specific functions to options for getting your app published.\n\nStart by building a sample app with step-by-step instructions, using either Flash Professional or Flash Builder. Then learn how to use ActionScript libraries for typical device features, such as the camera and the accelerometer. This book includes ready-to-run example code and a case study that demonstrates how to bring all of the elements together into a full-scale working app."
+        android:textSize="14sp"/>
+</RelativeLayout>

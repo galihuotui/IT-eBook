@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="12dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="8dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/book_description_key"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:text="@string/book_description"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+            <TextView
+                android:id="@+id/book_description_value"
+                android:layout_marginTop="8dp"
+                android:layout_below="@+id/book_description_key"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Put your ActionScript 3 skills to work building mobile apps. This book shows you how to develop native applications for Android-based smartphones and tablets from the ground up, using Adobe AIR. You learn the entire development process hands-on, from coding specific functions to options for getting your app published.\n\nStart by building a sample app with step-by-step instructions, using either Flash Professional or Flash Builder. Then learn how to use ActionScript libraries for typical device features, such as the camera and the accelerometer. This book includes ready-to-run example code and a case study that demonstrates how to bring all of the elements together into a full-scale working app."
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/book_details_key"
+                android:layout_below="@+id/book_description_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:text="@string/book_details"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/book_publisher_key"
+                android:layout_below="@+id/book_details_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book_publisher"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/book_publisher_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="O'Reilly Media"
+                android:textSize="16sp"
+                android:layout_alignTop="@+id/book_publisher_key"
+                android:layout_centerHorizontal="true" />
+
+
+            <TextView
+                android:id="@+id/book_author_key"
+                android:layout_below="@+id/book_publisher_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book_author"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/book_author_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Veronique Brossier"
+                android:textSize="16sp"
+                android:layout_alignTop="@+id/book_author_key"
+                android:layout_alignStart="@+id/book_publisher_value" />
+
+
+            <TextView
+                android:id="@+id/book_isbn_key"
+                android:layout_below="@+id/book_author_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book_isbn"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/book_isbn_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="978-1-4493-9482-0"
+                android:textSize="16sp"
+                android:layout_alignTop="@+id/book_isbn_key"
+                android:layout_alignStart="@+id/book_author_value" />
+
+            <TextView
+                android:id="@+id/book_year_key"
+                android:layout_below="@+id/book_isbn_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book_year"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/book_year_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2011"
+                android:textSize="16sp"
+                android:layout_alignTop="@+id/book_year_key"
+                android:layout_alignStart="@+id/book_isbn_value" />
+
+
+            <TextView
+                android:id="@+id/book_pages_key"
+                android:layout_below="@+id/book_year_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book_pages"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/book_pages_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="222"
+                android:textSize="16sp"
+                android:layout_alignTop="@+id/book_pages_key"
+                android:layout_alignStart="@+id/book_isbn_value" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+    </ScrollView>
+</LinearLayout>
