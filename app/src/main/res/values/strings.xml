@@ -23,8 +23,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_mark">Tim.Cui</string>
-    <string name="nav_setting">Settings</string>
-    <string name="nav_about">About</string>
+    <string name="nav_setting">设置</string>
+    <string name="nav_about">关于</string>
     <string name="press_back_again">再按一次退出应用</string>
     <string name="no_book">没有书籍</string>
     <string name="download">Download</string>
@@ -65,4 +65,5 @@
     <string name="under_mobile_network">正在使用手机流量上网(￣.￣)</string>
     <string name="under_wifi">正在使用WIFI上网╮(￣▽￣)╭ </string>
     <string name="no_network">手机网络好像有点问题(︶︿︶)</string>
+    <string name="download_complete">下载成功</string>
 </resources>

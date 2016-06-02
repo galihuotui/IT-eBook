@@ -239,6 +239,7 @@ public class BookDetailActivity2 extends BaseActivity
                         request.addRequestHeader("Referer", referer);
                         request.allowScanningByMediaScanner();
                         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                        request.setMimeType("application/pdf");
 
                         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                             request.setDestinationInExternalPublicDir(
