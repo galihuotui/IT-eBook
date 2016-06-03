@@ -8,7 +8,7 @@ public class CkyDaoGenerator {
         Schema schema = new Schema(1, "com.cky.greendao");
         addBook(schema);
 
-        new DaoGenerator().generateAll(schema, "~/Downloads/Rx/app/src/main/java-gen");
+        new DaoGenerator().generateAll(schema, "/Users/cuikangyuan/Desktop/work/android_workspace/Rx/app/src/main/java-gen");
     }
 
     private static void addBook(Schema schema) {
