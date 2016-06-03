@@ -17,6 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/java-gen']
+        }
+    }
 }
 repositories {
 
@@ -51,6 +57,8 @@ dependencies {
     compile libs.easing
     compile libs.nineOld
     compile libs.androidanimations
+    compile libs.greenDao
+
     //compile libs.FABProgressCircle
     //compile libs.downloader
     //compile libs.springView

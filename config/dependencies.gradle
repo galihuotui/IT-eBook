@@ -39,7 +39,7 @@ ext {
     easing = "1.0.1@aar"
     androidanimations = "1.1.3@aar"
     downloader = "1.4.3"
-    greenDao = "2.2.0"
+    greenDao = "2.2.1"
     FABProgressCircle = "1.01@aar"
     //Test
     jUnit = '4.12'
