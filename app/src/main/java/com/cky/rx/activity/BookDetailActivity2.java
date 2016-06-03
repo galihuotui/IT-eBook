@@ -9,8 +9,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -54,6 +56,8 @@ public class BookDetailActivity2 extends BaseActivity
     ProgressBar pbLoading;
     @Bind(R.id.app_bar_layout)
     AppBarLayout appBarLayout;
+    @Bind(R.id.root_layout)
+    CoordinatorLayout coordinatorLayout;
 
     private BookDetailAdapter adapter;
 
@@ -142,6 +146,10 @@ public class BookDetailActivity2 extends BaseActivity
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        if(!fab.isClickable()) {
+            fab.setClickable(true);
         }
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -251,7 +259,7 @@ public class BookDetailActivity2 extends BaseActivity
                         long id = downloadManager.enqueue(request);
 
                         //new Thread(getTrueDownloadLinkTask).start();
-
+                        Snackbar.make(coordinatorLayout, getString(R.string.add_to_download_queue), Snackbar.LENGTH_SHORT).show();
                     }
                 })
                 .show();

@@ -65,5 +65,7 @@
     <string name="under_mobile_network">正在使用手机流量上网(￣.￣)</string>
     <string name="under_wifi">正在使用WIFI上网╮(￣▽￣)╭ </string>
     <string name="no_network">手机网络好像有点问题(︶︿︶)</string>
-    <string name="download_complete">下载成功</string>
+    <string name="download_complete">PDF下载成功</string>
+    <string name="under_developing">功能尚在开发中</string>
+    <string name="add_to_download_queue">后台开始下载</string>
 </resources>

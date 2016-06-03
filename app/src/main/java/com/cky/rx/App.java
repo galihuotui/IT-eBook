@@ -22,4 +22,5 @@ public class App extends Application {
         CrashHandler crashHandler = CrashHandler.getsInstance();
         crashHandler.init(this);
     }
+
 }

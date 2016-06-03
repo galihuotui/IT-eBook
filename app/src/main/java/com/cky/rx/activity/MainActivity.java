@@ -29,6 +29,7 @@ import com.cky.rx.fragment.impl.BookJavaScriptFragment;
 import com.cky.rx.fragment.impl.BookMYSQLFragment;
 import com.cky.rx.fragment.impl.BookPHPFragment;
 import com.cky.rx.fragment.impl.BookPythonFragment;
+import com.cky.rx.receiver.DownloadCompleteReceiver;
 import com.cky.rx.receiver.NetworkChangeReceiver;
 
 import butterknife.Bind;
@@ -50,6 +51,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private long exitTime;
 
     private NetworkChangeReceiver networkChangeReceiver = new NetworkChangeReceiver();
+    private DownloadCompleteReceiver downloadCompleteReceiver = new DownloadCompleteReceiver();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,6 +128,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         navigationView.setNavigationItemSelectedListener(this);
 
         registNetworkChangeReceiver();
+
     }
 
 
@@ -147,7 +151,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         int id = item.getItemId();
         if (id == R.id.nav_set) {
-            Toast.makeText(MainActivity.this, getString(R.string.TODO), Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, getString(R.string.under_developing), Toast.LENGTH_SHORT).show();
             drawerLayout.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_about) {
             AboutActivity.start(MainActivity.this);
@@ -182,5 +186,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private void unRegistNetworkChangeReceiver() {
         this.unregisterReceiver(networkChangeReceiver);
     }
+
+
 }
 

@@ -28,13 +28,13 @@ public class NetworkChangeReceiver extends BroadcastReceiver {
         if (wifiState != null && mobileState != null
                 && NetworkInfo.State.CONNECTED == mobileState
                 && NetworkInfo.State.CONNECTED != wifiState) {
-            Toast.makeText(context, context.getString(R.string.under_mobile_network),Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, context.getString(R.string.under_mobile_network),Toast.LENGTH_LONG).show();
         } else if (wifiState != null && mobileState != null
                 && NetworkInfo.State.CONNECTED != wifiState
                 && NetworkInfo.State.CONNECTED != mobileState) {
             Toast.makeText(context, context.getString(R.string.no_network),Toast.LENGTH_LONG).show();
         } else if (wifiState != null && wifiState == NetworkInfo.State.CONNECTED) {
-            Toast.makeText(context, context.getString(R.string.under_wifi),Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, context.getString(R.string.under_wifi),Toast.LENGTH_LONG).show();
         }
     }
 }
