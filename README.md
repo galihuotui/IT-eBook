@@ -5,10 +5,10 @@
 该项目基于 IT-eBook api 并开源，同时使用到Rx, Glide, Retrofit 等开源技术，UI设计基于Material Design的风格， 目前提供预置类别书籍的下载功能，同时将继续优化功能并提供自定义搜索书籍下载
 
 ##应用截图<br/>
-<img src="./images/1.png" width="480" height="640"/>
-<img src="./images/2.png" width="480" height="640"/>
-<img src="./images/4.png" width="480" height="640"/>
-<img src="./images/6.png" width="480" height="640"/>
+<img src="./images/1.png" width="320" height="500"/>
+<img src="./images/2.png" width="320" height="500"/>
+<img src="./images/4.png" width="320" height="500"/>
+<img src="./images/6.png" width="320" height="500"/>
 
 ##[Apk下载](http://fir.im/41ud)
 
