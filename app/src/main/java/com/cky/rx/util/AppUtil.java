@@ -6,13 +6,10 @@ import android.content.pm.PackageManager;
 
 import com.cky.rx.R;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-
 /**
  * Created by cuikangyuan on 16/5/22.
  */
-public class Util {
+public class AppUtil {
 
     public static String getVerion(Context context) {
         try {

@@ -9,6 +9,14 @@
     <item android:title="@string/app_name">
         <menu>
             <item
+                android:id="@+id/nav_search"
+                android:icon="@drawable/ic_search_24dp"
+                android:title="@string/nav_search"/>
+            <item
+                android:id="@+id/nav_manage"
+                android:icon="@drawable/ic_manage_24dp"
+                android:title="@string/nav_manage"/>
+            <item
                 android:id="@+id/nav_set"
                 android:icon="@drawable/ic_settings_24dp"
                 android:title="@string/nav_setting"/>

@@ -25,13 +25,16 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 
+import com.cky.greendao.Book;
 import com.cky.rx.R;
 import com.cky.rx.adapter.BookDetailAdapter;
+import com.cky.rx.data.Constants;
 import com.cky.rx.fragment.base.BaseActivity;
 import com.cky.rx.fragment.base.BundleKey;
 import com.cky.rx.model.BookDetailResult;
 import com.cky.rx.model.BookItemToShow;
 import com.cky.rx.network.Network;
+import com.cky.rx.util.DaoUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -64,6 +67,7 @@ public class BookDetailActivity2 extends BaseActivity
     private String BookId;
     private String downloadLink;
     private String BookName;
+    private String BookIsbn;
 
     public static void start(Context context, BookItemToShow bookItemToShow) {
         Intent intent = new Intent(context, BookDetailActivity2.class);
@@ -90,6 +94,7 @@ public class BookDetailActivity2 extends BaseActivity
 
             downloadLink = bookDetailResult.Download;
             BookName = bookDetailResult.Title;
+            BookIsbn = bookDetailResult.ISBN;
             toolbar.setTitle(BookName);
             Log.d(TAG, "onNext------->" + bookDetailResult.Description);
             adapter = new BookDetailAdapter(BookDetailActivity2.this, bookDetailResult);
@@ -256,10 +261,22 @@ public class BookDetailActivity2 extends BaseActivity
                             );
                         }
 
-                        long id = downloadManager.enqueue(request);
+                        if (!DaoUtil.checkBookExistByIsbn(String.valueOf(BookIsbn))) {
+                            long request_id = downloadManager.enqueue(request);
 
-                        //new Thread(getTrueDownloadLinkTask).start();
-                        Snackbar.make(coordinatorLayout, getString(R.string.add_to_download_queue), Snackbar.LENGTH_SHORT).show();
+                            Snackbar.make(coordinatorLayout, getString(R.string.add_to_download_queue), Snackbar.LENGTH_SHORT).show();
+
+                            Book book = new Book();
+                            book.setBook_name(BookName);
+                            book.setBook_id(BookId);
+                            book.setBook_isbn(BookIsbn);
+                            book.setRequest_id(String.valueOf(request_id));
+                            book.setDownload_status(Constants.STATUS_DOWNLOADING);
+                            DaoUtil.insertOneBook(book);
+                        } else {
+
+                        }
+
                     }
                 })
                 .show();

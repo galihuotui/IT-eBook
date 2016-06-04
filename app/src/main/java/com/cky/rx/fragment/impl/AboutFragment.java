@@ -11,7 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.view.View;
 
 import com.cky.rx.R;
-import com.cky.rx.util.Util;
+import com.cky.rx.util.AppUtil;
 
 /**
  * Created by cuikangyuan on 16/5/22.
@@ -51,7 +51,7 @@ public class AboutFragment extends PreferenceFragment implements Preference.OnPr
         mSinaWeibo.setOnPreferenceClickListener(this);
         mShare.setOnPreferenceClickListener(this);
 
-        mVersion.setSummary(Util.getVerion(getActivity()));
+        mVersion.setSummary(AppUtil.getVerion(getActivity()));
     }
 
     @Override

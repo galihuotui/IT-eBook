@@ -1,4 +1,4 @@
-package com.cky.rx.constant;
+package com.cky.rx.data;
 
 /**
  * Created by cuikangyuan on 16/6/3.

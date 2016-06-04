@@ -24,10 +24,11 @@ public class BookDao extends AbstractDao<Book, Long> {
     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Bookname = new Property(1, String.class, "bookname", false, "BOOKNAME");
-        public final static Property Bookisbn = new Property(2, String.class, "bookisbn", false, "BOOKISBN");
-        public final static Property Bookid = new Property(3, String.class, "bookid", false, "BOOKID");
-        public final static Property Requestid = new Property(4, String.class, "requestid", false, "REQUESTID");
+        public final static Property Book_name = new Property(1, String.class, "book_name", false, "BOOK_NAME");
+        public final static Property Book_isbn = new Property(2, String.class, "book_isbn", false, "BOOK_ISBN");
+        public final static Property Book_id = new Property(3, String.class, "book_id", false, "BOOK_ID");
+        public final static Property Request_id = new Property(4, String.class, "request_id", false, "REQUEST_ID");
+        public final static Property Download_status = new Property(5, String.class, "download_status", false, "DOWNLOAD_STATUS");
     };
 
 
@@ -44,10 +45,11 @@ public class BookDao extends AbstractDao<Book, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"BOOK\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"BOOKNAME\" TEXT," + // 1: bookname
-                "\"BOOKISBN\" TEXT," + // 2: bookisbn
-                "\"BOOKID\" TEXT," + // 3: bookid
-                "\"REQUESTID\" TEXT);"); // 4: requestid
+                "\"BOOK_NAME\" TEXT," + // 1: book_name
+                "\"BOOK_ISBN\" TEXT," + // 2: book_isbn
+                "\"BOOK_ID\" TEXT," + // 3: book_id
+                "\"REQUEST_ID\" TEXT," + // 4: request_id
+                "\"DOWNLOAD_STATUS\" TEXT);"); // 5: download_status
     }
 
     /** Drops the underlying database table. */
@@ -66,24 +68,29 @@ public class BookDao extends AbstractDao<Book, Long> {
             stmt.bindLong(1, id);
         }
  
-        String bookname = entity.getBookname();
-        if (bookname != null) {
-            stmt.bindString(2, bookname);
+        String book_name = entity.getBook_name();
+        if (book_name != null) {
+            stmt.bindString(2, book_name);
         }
  
-        String bookisbn = entity.getBookisbn();
-        if (bookisbn != null) {
-            stmt.bindString(3, bookisbn);
+        String book_isbn = entity.getBook_isbn();
+        if (book_isbn != null) {
+            stmt.bindString(3, book_isbn);
         }
  
-        String bookid = entity.getBookid();
-        if (bookid != null) {
-            stmt.bindString(4, bookid);
+        String book_id = entity.getBook_id();
+        if (book_id != null) {
+            stmt.bindString(4, book_id);
         }
  
-        String requestid = entity.getRequestid();
-        if (requestid != null) {
-            stmt.bindString(5, requestid);
+        String request_id = entity.getRequest_id();
+        if (request_id != null) {
+            stmt.bindString(5, request_id);
+        }
+ 
+        String download_status = entity.getDownload_status();
+        if (download_status != null) {
+            stmt.bindString(6, download_status);
         }
     }
 
@@ -98,10 +105,11 @@ public class BookDao extends AbstractDao<Book, Long> {
     public Book readEntity(Cursor cursor, int offset) {
         Book entity = new Book( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // bookname
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // bookisbn
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // bookid
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4) // requestid
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // book_name
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // book_isbn
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // book_id
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // request_id
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // download_status
         );
         return entity;
     }
@@ -110,10 +118,11 @@ public class BookDao extends AbstractDao<Book, Long> {
     @Override
     public void readEntity(Cursor cursor, Book entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setBookname(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setBookisbn(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setBookid(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setRequestid(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setBook_name(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setBook_isbn(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setBook_id(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setRequest_id(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setDownload_status(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
      }
     
     /** @inheritdoc */

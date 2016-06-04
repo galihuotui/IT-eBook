@@ -23,8 +23,10 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_mark">Tim.Cui</string>
-    <string name="nav_setting">设置</string>
-    <string name="nav_about">关于</string>
+    <string name="nav_setting">偏好设置</string>
+    <string name="nav_manage">下载管理</string>
+    <string name="nav_about">关于应用</string>
+    <string name="nav_search">我要搜书</string>
     <string name="press_back_again">再按一次退出应用</string>
     <string name="no_book">没有书籍</string>
     <string name="download">Download</string>

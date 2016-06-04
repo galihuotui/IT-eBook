@@ -15,10 +15,11 @@ public class CkyDaoGenerator {
         Entity book = schema.addEntity("Book");
 
         book.addIdProperty();
-        book.addStringProperty("bookname");
-        book.addStringProperty("bookisbn");
-        book.addStringProperty("bookid");
-        book.addStringProperty("requestid");
+        book.addStringProperty("book_name");
+        book.addStringProperty("book_isbn");
+        book.addStringProperty("book_id");
+        book.addStringProperty("request_id");
+        book.addStringProperty("download_status");
     }
 
 }
