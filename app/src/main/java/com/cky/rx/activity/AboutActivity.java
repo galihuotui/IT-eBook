@@ -10,7 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.cky.rx.R;
-import com.cky.rx.fragment.base.BaseActivity;
+import com.cky.rx.activity.base.BaseActivity;
 import com.cky.rx.fragment.impl.AboutFragment;
 
 import butterknife.Bind;

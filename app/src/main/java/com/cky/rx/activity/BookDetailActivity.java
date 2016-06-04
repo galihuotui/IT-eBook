@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cky.rx.R;
-import com.cky.rx.fragment.base.BaseActivity;
+import com.cky.rx.activity.base.BaseActivity;
 import com.cky.rx.fragment.base.BundleKey;
 import com.cky.rx.model.BookDetailResult;
 import com.cky.rx.model.BookItemToShow;

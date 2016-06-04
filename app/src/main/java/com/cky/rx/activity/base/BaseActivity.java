@@ -1,4 +1,5 @@
-package com.cky.rx.fragment.base;
+package com.cky.rx.activity.base;
+
 
 import android.support.v7.app.AppCompatActivity;
 

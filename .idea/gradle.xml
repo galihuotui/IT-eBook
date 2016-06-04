@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/daogenerator" />
+            <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/searchviewlibrary" />
           </set>
         </option>
         <option name="myModules">
@@ -18,6 +20,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/daogenerator" />
+            <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/searchviewlibrary" />
           </set>
         </option>
       </GradleProjectSettings>

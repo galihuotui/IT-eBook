@@ -70,4 +70,6 @@
     <string name="download_complete">PDF下载成功</string>
     <string name="under_developing">功能尚在开发中</string>
     <string name="add_to_download_queue">后台开始下载</string>
+    <string name="input_key_word">请输入关键字</string>
+    <string name="speak_key_word">请说出关键字</string>
 </resources>

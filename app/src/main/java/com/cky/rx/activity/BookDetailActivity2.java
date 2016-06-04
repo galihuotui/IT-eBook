@@ -29,7 +29,7 @@ import com.cky.greendao.Book;
 import com.cky.rx.R;
 import com.cky.rx.adapter.BookDetailAdapter;
 import com.cky.rx.data.Constants;
-import com.cky.rx.fragment.base.BaseActivity;
+import com.cky.rx.activity.base.BaseActivity;
 import com.cky.rx.fragment.base.BundleKey;
 import com.cky.rx.model.BookDetailResult;
 import com.cky.rx.model.BookItemToShow;

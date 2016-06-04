@@ -33,35 +33,41 @@ repositories {
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
-    compile (name:'Downloader-1.4.3', ext:'aar')
-
+    compile(name: 'Downloader-1.4.3', ext: 'aar')
     def test = parent.ext.test
     testCompile test.junit
-
     def libs = parent.ext.libs
     compile libs.supportV4
     compile libs.design
     compile libs.cardView
+
     compile libs.okhttp3
     compile libs.retrofit2
     compile libs.retrofit2WithGson
+
     compile libs.retrofit2WithRxJava
     compile libs.glide
     compile libs.butterKnife
+
     compile libs.rxJava
     compile libs.rxAndroid
     compile libs.rxBinding
     compile libs.appcompat
+
     compile libs.awesomeSplash
     compile libs.easing
     compile libs.nineOld
     compile libs.androidanimations
-    compile libs.greenDao
 
+    compile libs.greenDao
+    //compile libs.searchView
+    compile libs.appcompat
     //compile libs.FABProgressCircle
+
     //compile libs.downloader
+
     //compile libs.springView
 
+    compile project(':library')
 
 }

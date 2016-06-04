@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/Rx.iml" filepath="$PROJECT_DIR$/Rx.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/daogenerator/daogenerator.iml" filepath="$PROJECT_DIR$/daogenerator/daogenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/searchviewlibrary/searchviewlibrary.iml" filepath="$PROJECT_DIR$/searchviewlibrary/searchviewlibrary.iml" />
     </modules>
   </component>
 </project>

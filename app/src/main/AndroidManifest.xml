@@ -28,13 +28,16 @@
         <activity
             android:name=".activity.BookDetailActivity2"
             android:parentActivityName=".activity.MainActivity" />
-        <activity android:name=".activity.AboutActivity"/>
+        <activity android:name=".activity.AboutActivity" />
 
         <receiver android:name=".receiver.DownloadCompleteReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".activity.SearchActivity"
+            android:parentActivityName=".activity.MainActivity"/>
     </application>
 
 </manifest>

@@ -22,7 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.cky.rx.R;
-import com.cky.rx.fragment.base.BaseActivity;
+import com.cky.rx.activity.base.BaseActivity;
 import com.cky.rx.fragment.impl.BookAndroidFragment;
 import com.cky.rx.fragment.impl.BookJavaFragment;
 import com.cky.rx.fragment.impl.BookJavaScriptFragment;
@@ -152,9 +152,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         int id = item.getItemId();
         if (id == R.id.nav_set) {
             Toast.makeText(MainActivity.this, getString(R.string.under_developing), Toast.LENGTH_SHORT).show();
-            drawerLayout.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_about) {
             AboutActivity.start(MainActivity.this);
+        } else if (id == R.id.nav_manage) {
+            Toast.makeText(MainActivity.this, getString(R.string.under_developing), Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_search) {
+            SearchActivity.start(MainActivity.this);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
