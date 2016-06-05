@@ -1,6 +1,7 @@
 package com.cky.rx.activity;
 
 import android.app.DownloadManager;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cky.greendao.Book;
 import com.cky.rx.R;
@@ -109,7 +111,13 @@ public class DownloadManageActivity extends BaseActivity {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setDataAndType(Uri.parse(uri), mimetype);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    DownloadManageActivity.this.startActivity(intent);
+
+                    try {
+                        DownloadManageActivity.this.startActivity(intent);
+                    } catch (ActivityNotFoundException e) {
+                        Toast.makeText(DownloadManageActivity.this, getString(R.string.activity_not_found), Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
             }

@@ -77,4 +77,6 @@
     <string name="downloading">正在下载</string>
     <string name="unknown">未知状态</string>
     <string name="no_download_item">暂无下载记录</string>
+    <string name="activity_not_found">未找到打开该文件的应用</string>
+    <string name="already_add_to_download">这本书正在下载哦</string>
 </resources>

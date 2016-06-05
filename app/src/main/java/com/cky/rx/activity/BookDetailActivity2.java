@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.cky.greendao.Book;
 import com.cky.rx.R;
@@ -220,58 +221,60 @@ public class BookDetailActivity2 extends BaseActivity
         } else {
             BookName = BookId;
         }
-        new AlertDialog.Builder(BookDetailActivity2.this)
-                .setTitle(getString(R.string.tip))
-                .setMessage(message)
-                .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //String referer = "http://www.it-ebooks.info/book/"+BookId+"/";
-                        String referer = getString(R.string.referer, BookId);
-                        /*
-                        Uri uri = Uri.parse(downloadLink);
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_VIEW);
-                        intent.setData(uri);
-                        BookDetailActivity.this.startActivity(intent);
-                        */
-                        DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+        if (!DaoUtil.checkBookExistByIsbn(String.valueOf(BookIsbn))) {
+            new AlertDialog.Builder(BookDetailActivity2.this)
+                    .setTitle(getString(R.string.tip))
+                    .setMessage(message)
+                    .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //String referer = "http://www.it-ebooks.info/book/"+BookId+"/";
+                            String referer = getString(R.string.referer, BookId);
+                            /*
+                            Uri uri = Uri.parse(downloadLink);
+                            Intent intent = new Intent();
+                            intent.setAction(Intent.ACTION_VIEW);
+                            intent.setData(uri);
+                            BookDetailActivity.this.startActivity(intent);
+                            */
+                            DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
 
-                        Uri uri = Uri.parse(downloadLink);
-                        DownloadManager.Request request = new DownloadManager.Request(uri);
+                            Uri uri = Uri.parse(downloadLink);
+                            DownloadManager.Request request = new DownloadManager.Request(uri);
 
-                        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
-                        request.addRequestHeader("Referer", referer);
-                        request.allowScanningByMediaScanner();
-                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                        request.setMimeType("application/pdf");
+                            request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+                            request.addRequestHeader("Referer", referer);
+                            request.allowScanningByMediaScanner();
+                            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                            request.setMimeType("application/pdf");
 
-                        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                            request.setDestinationInExternalPublicDir(
-                                    getString(R.string.download_file_folder_name),
-                                    getString(R.string.download_file_name, BookName)
-                            );
+                            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                                request.setDestinationInExternalPublicDir(
+                                        getString(R.string.download_file_folder_name),
+                                        getString(R.string.download_file_name, BookName)
+                                );
+                            }
+
+
+                                long request_id = downloadManager.enqueue(request);
+
+                                Snackbar.make(coordinatorLayout, getString(R.string.add_to_download_queue), Snackbar.LENGTH_SHORT).show();
+
+                                Book book = new Book();
+                                book.setBook_name(BookName);
+                                book.setBook_id(BookId);
+                                book.setBook_isbn(BookIsbn);
+                                book.setRequest_id(String.valueOf(request_id));
+                                book.setDownload_status(Constants.STATUS_DOWNLOADING);
+                                DaoUtil.insertOneBook(book);
+
+
                         }
-
-                        if (!DaoUtil.checkBookExistByIsbn(String.valueOf(BookIsbn))) {
-                            long request_id = downloadManager.enqueue(request);
-
-                            Snackbar.make(coordinatorLayout, getString(R.string.add_to_download_queue), Snackbar.LENGTH_SHORT).show();
-
-                            Book book = new Book();
-                            book.setBook_name(BookName);
-                            book.setBook_id(BookId);
-                            book.setBook_isbn(BookIsbn);
-                            book.setRequest_id(String.valueOf(request_id));
-                            book.setDownload_status(Constants.STATUS_DOWNLOADING);
-                            DaoUtil.insertOneBook(book);
-                        } else {
-
-                        }
-
-                    }
-                })
-                .show();
+                    })
+                    .show();
+        } else {
+            Toast.makeText(BookDetailActivity2.this, getString(R.string.already_add_to_download), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void showDownloadFab() {
