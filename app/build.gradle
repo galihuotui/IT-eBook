@@ -62,7 +62,7 @@ dependencies {
     compile libs.greenDao
     //compile libs.searchView
     compile libs.appcompat
-    //compile libs.FABProgressCircle
+    //compile libs.flexibledivider
 
     //compile libs.downloader
 

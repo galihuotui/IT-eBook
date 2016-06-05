@@ -48,11 +48,11 @@ public class DaoUtil {
     }
     public static boolean checkBookExistByIsbn(String bookIsbn) {
         List<Book> queryResult = App.daoManager.queryBook(BookDao.Properties.Book_isbn.eq(bookIsbn));
-        if (queryResult.size() > 0) {
+        return queryResult.size() > 0;
+    }
 
-            return true;
-        }
-
-        return false;
+    public static boolean checkBookExistByBookId(String bookId) {
+        List<Book> queryResult = App.daoManager.queryBook(BookDao.Properties.Book_id.eq(bookId));
+        return queryResult.size() > 0;
     }
 }

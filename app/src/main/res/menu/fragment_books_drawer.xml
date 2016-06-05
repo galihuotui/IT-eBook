@@ -16,13 +16,15 @@
                 android:id="@+id/nav_manage"
                 android:icon="@drawable/ic_manage_24dp"
                 android:title="@string/nav_manage"/>
+            <!--
             <item
                 android:id="@+id/nav_set"
                 android:icon="@drawable/ic_settings_24dp"
                 android:title="@string/nav_setting"/>
+                -->
             <item
                 android:id="@+id/nav_about"
-                android:icon="@drawable/ic_menu_about"
+                android:icon="@drawable/ic_settings_24dp"
                 android:title="@string/nav_about"/>
         </menu>
     </item>

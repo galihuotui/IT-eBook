@@ -3,8 +3,8 @@ package com.cky.rx.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.arlib.floatingsearchview.FloatingSearchView;
 
+import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import com.cky.rx.R;
 import com.cky.rx.activity.base.BaseActivity;
@@ -17,11 +17,13 @@ public class SearchActivity extends BaseActivity {
     @Bind(R.id.searchView)
     FloatingSearchView mSearchView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
+
         setSearchView();
 
     }

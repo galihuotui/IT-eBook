@@ -40,7 +40,7 @@
     <string name="download_file_folder_name">IT-eBook_Download</string>
     <string name="download_file_name">%1$s.pdf</string>
     <string name="TODO">敬请期待^_^</string>
-    <string name="about">关于</string>
+    <string name="about">关于应用</string>
     <string name="introduction_key">introduction</string>
     <string name="author_key">author</string>
     <string name="current_version_key">current_version</string>
@@ -72,4 +72,9 @@
     <string name="add_to_download_queue">后台开始下载</string>
     <string name="input_key_word">请输入关键字</string>
     <string name="speak_key_word">请说出关键字</string>
+    <string name="download_success">已下载</string>
+    <string name="download_fail">下载失败</string>
+    <string name="downloading">正在下载</string>
+    <string name="unknown">未知状态</string>
+    <string name="no_download_item">暂无下载记录</string>
 </resources>

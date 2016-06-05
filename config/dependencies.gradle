@@ -42,10 +42,12 @@ ext {
     greenDao = "2.2.1"
     FABProgressCircle = "1.01@aar"
     searchView = "2.0.1"
+    flexibledivider = "1.2.9"
     //Test
     jUnit = '4.12'
 
     libs = [
+            flexibledivider     :"com.yqritc:recyclerview-flexibledivider:${flexibledivider}",
             searchView          :"com.github.arimorty:floatingsearchview:${searchView}",
             FABProgressCircle   :"com.github.jorgecastilloprz:fabprogresscircle:${FABProgressCircle}",
             greenDao            :"org.greenrobot:greendao:${greenDao}",

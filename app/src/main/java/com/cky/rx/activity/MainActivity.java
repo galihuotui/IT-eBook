@@ -1,7 +1,6 @@
 package com.cky.rx.activity;
 
 import android.content.IntentFilter;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -16,10 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.cky.rx.R;
 import com.cky.rx.activity.base.BaseActivity;
@@ -57,13 +53,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getWindow();
-            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
-
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -150,12 +139,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         */
 
         int id = item.getItemId();
-        if (id == R.id.nav_set) {
-            Toast.makeText(MainActivity.this, getString(R.string.under_developing), Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_about) {
+        if (id == R.id.nav_about) {
             AboutActivity.start(MainActivity.this);
         } else if (id == R.id.nav_manage) {
-            Toast.makeText(MainActivity.this, getString(R.string.under_developing), Toast.LENGTH_SHORT).show();
+            DownloadManageActivity.start(MainActivity.this);
         } else if (id == R.id.nav_search) {
             SearchActivity.start(MainActivity.this);
         }

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.AppBarLayout;
@@ -21,15 +20,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ProgressBar;
 
 import com.cky.greendao.Book;
 import com.cky.rx.R;
+import com.cky.rx.activity.base.BaseActivity;
 import com.cky.rx.adapter.BookDetailAdapter;
 import com.cky.rx.data.Constants;
-import com.cky.rx.activity.base.BaseActivity;
 import com.cky.rx.fragment.base.BundleKey;
 import com.cky.rx.model.BookDetailResult;
 import com.cky.rx.model.BookItemToShow;
@@ -140,21 +137,10 @@ public class BookDetailActivity2 extends BaseActivity
         rvBookDetail.setLayoutManager(new LinearLayoutManager(BookDetailActivity2.this));
         rvBookDetail.setHasFixedSize(true);
 
-        //状态栏透明化 以实现 抽屉的 全屏化
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getWindow();
-            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
-
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
-        if(!fab.isClickable()) {
-            fab.setClickable(true);
         }
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +168,12 @@ public class BookDetailActivity2 extends BaseActivity
 */
         BookId = getIntent().getStringExtra(BundleKey.BOOKID);
         getBookDetail(BookId);
+
+        if (DaoUtil.checkBookExistByBookId(BookId)) {
+            hideDownloadFab();
+        } else {
+            showDownloadFab();
+        }
 
     }
 
@@ -281,6 +273,19 @@ public class BookDetailActivity2 extends BaseActivity
                 })
                 .show();
     }
+
+    private void showDownloadFab() {
+        if (fab.getVisibility() == View.GONE) {
+            fab.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void hideDownloadFab() {
+        if (fab.getVisibility() == View.VISIBLE) {
+            fab.setVisibility(View.GONE);
+        }
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

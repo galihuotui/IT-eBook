@@ -1,7 +1,12 @@
 package com.cky.rx.activity.base;
 
 
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 
 import rx.Subscription;
 
@@ -11,6 +16,17 @@ import rx.Subscription;
 public class BaseActivity extends AppCompatActivity {
 
     protected Subscription subscription;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //状态栏透明化 以实现 抽屉的 全屏化
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+    }
 
     @Override
     protected void onDestroy() {
