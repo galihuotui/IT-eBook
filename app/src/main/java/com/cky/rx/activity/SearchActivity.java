@@ -3,8 +3,6 @@ package com.cky.rx.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
@@ -27,9 +25,13 @@ import rx.schedulers.Schedulers;
 
 public class SearchActivity extends BaseActivity {
 
+//    @Bind(R.id.searchView)
+//    SearchView mSearchView;
+
+    @Bind(R.id.searchView)
     FloatingSearchView mSearchView;
-    @Bind(R.id.search_results_list)
-    RecyclerView rvSearchResult;
+    //@Bind(R.id.search_results_list)
+    //RecyclerView rvSearchResult;
 
     private SearchResultListAdapter mSearchResultListAdapter = new SearchResultListAdapter(this);
 
@@ -73,11 +75,12 @@ public class SearchActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
-        mSearchView = (FloatingSearchView) findViewById(R.id.searchView);
         setupSearchView();
-        //setSearchView();
-        rvSearchResult.setLayoutManager(new GridLayoutManager(SearchActivity.this, 3));
-        rvSearchResult.setAdapter(mSearchResultListAdapter);
+
+        mSearchView.setSearchFocused(true);
+        //mSearchView.open(true);
+        //rvSearchResult.setLayoutManager(new GridLayoutManager(SearchActivity.this, 3));
+        //rvSearchResult.setAdapter(mSearchResultListAdapter);
 
     }
 
@@ -85,12 +88,30 @@ public class SearchActivity extends BaseActivity {
         Intent intent = new Intent(context, SearchActivity.class);
         context.startActivity(intent);
     }
-
     private void setupSearchView() {
+
+        mSearchView.setOnHomeActionClickListener(new FloatingSearchView.OnHomeActionClickListener() {
+            @Override
+            public void onHomeClicked() {
+                finish();
+            }
+        });
 
         mSearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
             public void onSearchTextChanged(String oldQuery, String newQuery) {
+
+            }
+        });
+
+        mSearchView.setOnFocusChangeListener(new FloatingSearchView.OnFocusChangeListener() {
+            @Override
+            public void onFocus() {
+
+            }
+
+            @Override
+            public void onFocusCleared() {
 
             }
         });
@@ -103,20 +124,16 @@ public class SearchActivity extends BaseActivity {
             @Override
             public void onSearchAction(String currentQuery) {
                 Toast.makeText(SearchActivity.this, currentQuery, Toast.LENGTH_SHORT).show();
-                search(currentQuery);
             }
         });
 
     }
 /*
-    protected void setSearchView() {
-
-        mSearchView = (SearchView) findViewById(R.id.searchView);
-        if (mSearchView != null) {
+    private void setupSearchView() {
             mSearchView.setVersion(SearchView.VERSION_TOOLBAR);
             mSearchView.setVersionMargins(SearchView.VERSION_MARGINS_TOOLBAR_BIG);
             mSearchView.setTextSize(16);
-            mSearchView.setHint("Search");
+            mSearchView.setHint(getString(R.string.input_key_word));
             mSearchView.setDivider(false);
             mSearchView.setVoice(true);
             mSearchView.setVoiceText("Set permission on Android 6+ !");
@@ -125,7 +142,8 @@ public class SearchActivity extends BaseActivity {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
                     Toast.makeText(SearchActivity.this, query, Toast.LENGTH_SHORT).show();
-                    search(query);
+                    //search(query);
+                    //mSearchView.close(false);
                     return true;
                 }
 
@@ -142,11 +160,11 @@ public class SearchActivity extends BaseActivity {
 
                 @Override
                 public void onClose() {
-
+                    SearchActivity.this.finish();
                 }
             });
 
-        }
 
-    }*/
+    }
+    */
 }

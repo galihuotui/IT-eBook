@@ -41,14 +41,16 @@ ext {
     downloader = "1.4.3"
     greenDao = "2.2.1"
     FABProgressCircle = "1.01@aar"
-    searchView = "2.0.1"
+    searchView = "3.0.2"
+    floatingsearchView = "2.0.1"
     flexibledivider = "1.2.9"
     //Test
     jUnit = '4.12'
 
     libs = [
+            floatingsearchViewlib       :"com.github.arimorty:floatingsearchview:${floatingsearchView}",
+            searchViewlib       :"com.lapism:searchview:${searchView}",
             flexibledivider     :"com.yqritc:recyclerview-flexibledivider:${flexibledivider}",
-            searchView          :"com.github.arimorty:floatingsearchview:${searchView}",
             FABProgressCircle   :"com.github.jorgecastilloprz:fabprogresscircle:${FABProgressCircle}",
             greenDao            :"org.greenrobot:greendao:${greenDao}",
             downloader          :"cn.aigestudio.downloader:Downloader:${downloader}",

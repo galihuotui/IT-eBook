@@ -60,13 +60,13 @@ dependencies {
     compile libs.androidanimations
 
     compile libs.greenDao
-    compile libs.searchView
+    compile libs.searchViewlib
     compile libs.appcompat
     //compile libs.flexibledivider
 
     //compile libs.downloader
 
-    //compile libs.springView
+    compile libs.floatingsearchViewlib
 
     //compile project(':library')
 
