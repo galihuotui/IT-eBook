@@ -3,6 +3,8 @@ package com.cky.rx.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
@@ -30,8 +32,8 @@ public class SearchActivity extends BaseActivity {
 
     @Bind(R.id.searchView)
     FloatingSearchView mSearchView;
-    //@Bind(R.id.search_results_list)
-    //RecyclerView rvSearchResult;
+    @Bind(R.id.search_results_list)
+    RecyclerView rvSearchResult;
 
     private SearchResultListAdapter mSearchResultListAdapter = new SearchResultListAdapter(this);
 
@@ -48,7 +50,7 @@ public class SearchActivity extends BaseActivity {
 
         @Override
         public void onNext(List<BookItemToShow> bookItemToShows) {
-            Toast.makeText(SearchActivity.this, String.valueOf(bookItemToShows.size()), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(SearchActivity.this, String.valueOf(bookItemToShows.size()), Toast.LENGTH_SHORT).show();
             mSearchResultListAdapter.setItems(bookItemToShows);
         }
     };
@@ -79,8 +81,8 @@ public class SearchActivity extends BaseActivity {
 
         mSearchView.setSearchFocused(true);
         //mSearchView.open(true);
-        //rvSearchResult.setLayoutManager(new GridLayoutManager(SearchActivity.this, 3));
-        //rvSearchResult.setAdapter(mSearchResultListAdapter);
+        rvSearchResult.setLayoutManager(new GridLayoutManager(SearchActivity.this, 2));
+        rvSearchResult.setAdapter(mSearchResultListAdapter);
 
     }
 
@@ -123,7 +125,8 @@ public class SearchActivity extends BaseActivity {
 
             @Override
             public void onSearchAction(String currentQuery) {
-                Toast.makeText(SearchActivity.this, currentQuery, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SearchActivity.this, currentQuery, Toast.LENGTH_SHORT).show();
+                search(currentQuery);
             }
         });
 

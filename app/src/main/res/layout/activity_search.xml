@@ -12,12 +12,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
  -->
-    <com.arlib.floatingsearchview.FloatingSearchView
-        android:id="@+id/searchView"
+    <RelativeLayout
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:floatingSearch_searchHint="@string/input_key_word"
-        app:floatingSearch_showSearchKey="true"
-        app:floatingSearch_leftActionMode="showHome"
-        />
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/search_results_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:paddingTop="60dp"
+            android:clipToPadding="false"/>
+
+        <com.arlib.floatingsearchview.FloatingSearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:floatingSearch_searchHint="@string/input_key_word"
+            app:floatingSearch_showSearchKey="true"
+            app:floatingSearch_leftActionMode="showHome"
+            app:floatingSearch_searchBarMarginLeft="@dimen/search_view_inset"
+            app:floatingSearch_searchBarMarginRight="@dimen/search_view_inset"
+            app:floatingSearch_searchBarMarginTop="@dimen/search_view_inset"
+            app:floatingSearch_dimBackground="false"
+            app:floatingSearch_dismissOnOutsideTouch="true"
+            />
+    </RelativeLayout>
+
 </android.support.design.widget.CoordinatorLayout>
