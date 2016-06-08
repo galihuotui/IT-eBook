@@ -29,6 +29,7 @@
     <string name="nav_search">我要搜书</string>
     <string name="press_back_again">再按一次退出应用</string>
     <string name="no_book">没有书籍</string>
+    <string name="no_search_result">这里空空如也</string>
     <string name="download">Download</string>
     <string name="tip">提示</string>
     <string name="ok">好</string>
