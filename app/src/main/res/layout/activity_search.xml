@@ -20,11 +20,14 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/search_results_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:paddingTop="60dp"
-            android:clipToPadding="false"/>
-
+            android:paddingTop="80dp"
+            android:clipToPadding="true"/>
+<android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    app:elevation="12dp">
         <com.arlib.floatingsearchview.FloatingSearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
@@ -38,6 +41,7 @@
             app:floatingSearch_dimBackground="false"
             app:floatingSearch_dismissOnOutsideTouch="true"
             />
+</android.support.design.widget.AppBarLayout>
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
