@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.TextView;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
@@ -34,18 +35,30 @@ public class SearchActivity extends BaseActivity {
     FloatingSearchView mSearchView;
     @Bind(R.id.search_results_list)
     RecyclerView rvSearchResult;
+    @Bind(R.id.tv_load_error)
+    TextView tvLoadError;
+    @Bind(R.id.tv_load_empty)
+    TextView tvLoadEmpty;
 
     private SearchResultListAdapter mSearchResultListAdapter = new SearchResultListAdapter(this);
 
     Observer<List<BookItemToShow>> observer = new Observer<List<BookItemToShow>>() {
         @Override
         public void onCompleted() {
-
+            if (mSearchResultListAdapter.getItems() == null || mSearchResultListAdapter.getItems().size() == 0) {
+                tvLoadError.setVisibility(View.GONE);
+                tvLoadEmpty.setVisibility(View.VISIBLE);
+            } else {
+                tvLoadEmpty.setVisibility(View.GONE);
+                tvLoadError.setVisibility(View.GONE);
+            }
         }
 
         @Override
         public void onError(Throwable e) {
-            Toast.makeText(SearchActivity.this, String.valueOf(e.getMessage()), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(SearchActivity.this, String.valueOf(e.getMessage()), Toast.LENGTH_SHORT).show();
+            tvLoadError.setVisibility(View.VISIBLE);
+            tvLoadEmpty.setVisibility(View.GONE);
         }
 
         @Override

@@ -12,6 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
  -->
+    <include
+        layout="@layout/include_empty"/>
+
+    <include
+        layout="@layout/include_error"/>
     <RelativeLayout
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
