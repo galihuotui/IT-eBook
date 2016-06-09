@@ -139,8 +139,8 @@ public class SearchActivity extends BaseActivity {
             @Override
             public void onSearchAction(String currentQuery) {
                 //Toast.makeText(SearchActivity.this, currentQuery, Toast.LENGTH_SHORT).show();
-                //search(currentQuery);
-                throw new RuntimeException("test crash handler");
+                search(currentQuery);
+                //throw new RuntimeException("test crash handler");
             }
         });
 
