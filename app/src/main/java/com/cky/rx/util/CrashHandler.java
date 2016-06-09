@@ -24,7 +24,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler{
     private static final String TAG = "CrashHandler";
     private static final boolean DEBUG = true;
     private static final String PATH = Environment.getExternalStorageDirectory()
-            .getPath() + "/RxCrash/log/";
+            .getPath() + "/IT-eBook_CrashLog/";
     private static final String FILE_NAME = "crash_log";
     private static final String FILE_NAME_SUFFIX = ".trace";
 
@@ -52,26 +52,27 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler{
                 Log.w(TAG, "sdcard unmounted , skip dump exception");
                 return;
             }
-
-            File dir = new File(PATH);
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-            long current = System.currentTimeMillis();
-            String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(current));
-            File file = new File(PATH + FILE_NAME + time + FILE_NAME_SUFFIX);
-
-            try {
-                PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
-                pw.println(time);
-                dumpPhoneInfo(pw);
-                pw.println();
-                ex.printStackTrace(pw);
-                pw.close();
-            } catch (Exception e) {
-                Log.e(TAG, "dump crash info failed");
-            }
         }
+        Log.e(TAG, "dump crash info start");
+        File dir = new File(PATH);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        long current = System.currentTimeMillis();
+        String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(current));
+        File file = new File(PATH + FILE_NAME + time + FILE_NAME_SUFFIX);
+
+        try {
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+            pw.println(time);
+            dumpPhoneInfo(pw);
+            pw.println();
+            ex.printStackTrace(pw);
+            pw.close();
+        } catch (Exception e) {
+            Log.e(TAG, "dump crash info failed");
+        }
+        Log.e(TAG, "dump crash info end");
     }
 
     private void dumpPhoneInfo(PrintWriter pw) throws PackageManager.NameNotFoundException{

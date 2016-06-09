@@ -22,19 +22,5 @@
         </android.support.v7.widget.RecyclerView>
 
     </android.support.v4.widget.SwipeRefreshLayout>
-    <!--
-        <com.liaoinstan.springview.widget.SpringView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:id="@+id/springView">
-
-            <android.support.v7.widget.RecyclerView
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:id="@+id/rvGrid">
-
-            </android.support.v7.widget.RecyclerView>
-        </com.liaoinstan.springview.widget.SpringView>
-      -->
 
 </android.support.design.widget.CoordinatorLayout>

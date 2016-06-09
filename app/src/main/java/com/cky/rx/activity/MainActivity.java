@@ -56,7 +56,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         navHeaderBackground = (RelativeLayout) headerView.findViewById(R.id.nav_header_background);

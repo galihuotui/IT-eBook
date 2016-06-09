@@ -177,23 +177,6 @@ public class BookAndroidFragment extends BaseFragment implements SwipeRefreshLay
 
         swipeRefreshLayout.setColorSchemeColors(Color.BLUE);
         swipeRefreshLayout.setOnRefreshListener(this);
-        /*
-        springView.setFooter(new DefaultFooter(getActivity()));
-        springView.setHeader(new DefaultHeader(getActivity()));
-
-        springView.setListener(new SpringView.OnFreshListener() {
-            @Override
-            public void onRefresh() {
-                search(QUERY_KEY);
-            }
-
-            @Override
-            public void onLoadmore() {
-                getNextPage();
-            }
-        });
-        */
-
 
         search(QUERY_KEY);
 
