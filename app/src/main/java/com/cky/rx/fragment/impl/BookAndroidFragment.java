@@ -37,6 +37,8 @@ public class BookAndroidFragment extends BaseFragment implements SwipeRefreshLay
     private static final String TAG = "BookAndroidFragment";
     private static final String QUERY_KEY = "Android";
 
+    private boolean isLoading = false;
+
     @Bind(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
     /*
@@ -58,6 +60,7 @@ public class BookAndroidFragment extends BaseFragment implements SwipeRefreshLay
         @Override
         public void onCompleted() {
             Log.d(TAG, "onCompleted");
+            isLoading = false;
             if (adapter.getItems() == null || adapter.getItems().size() == 0) {
                 tvLoadError.setVisibility(View.GONE);
                 tvLoadEmpty.setVisibility(View.VISIBLE);
@@ -71,6 +74,7 @@ public class BookAndroidFragment extends BaseFragment implements SwipeRefreshLay
         @Override
         public void onError(Throwable e) {
             Log.d(TAG, "onError");
+            isLoading = false;
             hideProgress();
             //Toast.makeText(getActivity(), getString(R.string.loading_failed), Toast.LENGTH_SHORT).show();
             //Snackbar.make(swipeRefreshLayout, R.string.loading_failed, Snackbar.LENGTH_SHORT).show();
@@ -104,6 +108,7 @@ public class BookAndroidFragment extends BaseFragment implements SwipeRefreshLay
                    @Override
                    public void call() {
                        showProgress();
+                       isLoading = true;
                        //adapter.setItems(null);
                    }
                })
@@ -127,6 +132,7 @@ public class BookAndroidFragment extends BaseFragment implements SwipeRefreshLay
                     @Override
                     public void call() {
                         showProgress();
+                        isLoading = true;
                     }
                 })
                 .map(SearchBookResultToItemsMapper.getInstance())
@@ -157,7 +163,7 @@ public class BookAndroidFragment extends BaseFragment implements SwipeRefreshLay
                     int lastVisiableItem = layoutManager.findLastCompletelyVisibleItemPosition();
                     int totalCount = layoutManager.getItemCount();
 
-                    if(lastVisiableItem == (totalCount - 1) && isSlideToLast) {
+                    if(lastVisiableItem == (totalCount - 1) && isSlideToLast && !isLoading) {
                         //Toast.makeText(getActivity(), getString(R.string.load_more), Toast.LENGTH_SHORT).show();
                         getNextPage();
                     }
@@ -217,7 +223,7 @@ public class BookAndroidFragment extends BaseFragment implements SwipeRefreshLay
         if (RecyclerView.NO_POSITION != position) {
             //Toast.makeText(getActivity(), adapter.getItemData(position).title, Toast.LENGTH_SHORT).show();
             //BookDetailActivity.start(getActivity(), adapter.getItemData(position));
-            BookDetailActivity2.start(getActivity(), adapter.getItemData(position));
+            BookDetailActivity2.start(getActivity(), adapter.getItemData(position).id);
         }
     }
 

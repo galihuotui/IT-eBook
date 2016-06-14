@@ -10,7 +10,6 @@ import rx.Subscription;
 public abstract class BaseFragment extends Fragment{
     protected Subscription subscription;
 
-
     public BaseFragment() {
         super();
     }

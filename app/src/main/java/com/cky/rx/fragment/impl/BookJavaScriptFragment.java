@@ -230,7 +230,7 @@ public class BookJavaScriptFragment extends BaseFragment implements  SwipeRefres
         final int position = recyclerView.getChildAdapterPosition(v);
         if (RecyclerView.NO_POSITION != position) {
             //Toast.makeText(getActivity(), adapter.getItemData(position).title, Toast.LENGTH_SHORT).show();
-            BookDetailActivity2.start(getActivity(), adapter.getItemData(position));
+            BookDetailActivity2.start(getActivity(), adapter.getItemData(position).id);
         }
     }
 }

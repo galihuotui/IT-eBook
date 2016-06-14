@@ -96,6 +96,16 @@ public class SearchActivity extends BaseActivity {
         //mSearchView.open(true);
         rvSearchResult.setLayoutManager(new GridLayoutManager(SearchActivity.this, 2));
         rvSearchResult.setAdapter(mSearchResultListAdapter);
+        mSearchResultListAdapter.setOnItemClickListener(new SearchResultListAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View view) {
+                final int position = rvSearchResult.getChildAdapterPosition(view);
+                if (RecyclerView.NO_POSITION != position) {
+                    BookDetailActivity2.start(SearchActivity.this, mSearchResultListAdapter.getItemData(position).id);
+                }
+
+            }
+        });
 
     }
 

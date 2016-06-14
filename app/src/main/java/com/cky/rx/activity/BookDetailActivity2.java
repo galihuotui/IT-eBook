@@ -30,7 +30,6 @@ import com.cky.rx.adapter.BookDetailAdapter;
 import com.cky.rx.data.Constants;
 import com.cky.rx.fragment.base.BundleKey;
 import com.cky.rx.model.BookDetailResult;
-import com.cky.rx.model.BookItemToShow;
 import com.cky.rx.network.Network;
 import com.cky.rx.util.DaoUtil;
 
@@ -67,9 +66,9 @@ public class BookDetailActivity2 extends BaseActivity
     private String BookName;
     private String BookIsbn;
 
-    public static void start(Context context, BookItemToShow bookItemToShow) {
+    public static void start(Context context, String bookId) {
         Intent intent = new Intent(context, BookDetailActivity2.class);
-        intent.putExtra(BundleKey.BOOKID, bookItemToShow.id);
+        intent.putExtra(BundleKey.BOOKID, bookId);
         context.startActivity(intent);
     }
 
