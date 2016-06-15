@@ -209,6 +209,10 @@ public class BookDetailActivity2 extends BaseActivity
             return true;
         }
         */
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            BookDetailActivity2.this.finish();
+        }
         return super.onOptionsItemSelected(item);
     }
 
