@@ -30,7 +30,7 @@ public class SearchActivity extends BaseActivity {
 
 //    @Bind(R.id.searchView)
 //    SearchView mSearchView;
-
+    private static final String TAG = SearchActivity.class.getSimpleName();
     @Bind(R.id.searchView)
     FloatingSearchView mSearchView;
     @Bind(R.id.search_results_list)
@@ -94,15 +94,18 @@ public class SearchActivity extends BaseActivity {
 
         mSearchView.setSearchFocused(true);
         //mSearchView.open(true);
-        rvSearchResult.setLayoutManager(new GridLayoutManager(SearchActivity.this, 2));
+        rvSearchResult.setLayoutManager(new GridLayoutManager(SearchActivity.this, 1));
         rvSearchResult.setAdapter(mSearchResultListAdapter);
         mSearchResultListAdapter.setOnItemClickListener(new SearchResultListAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view) {
                 final int position = rvSearchResult.getChildAdapterPosition(view);
-                if (RecyclerView.NO_POSITION != position) {
+                if (RecyclerView.NO_POSITION != position && mSearchResultListAdapter.getItems().size() != position) {
                     BookDetailActivity2.start(SearchActivity.this, mSearchResultListAdapter.getItemData(position).id);
+                } else if (RecyclerView.NO_POSITION != position && mSearchResultListAdapter.getItems().size() == position) {
+
                 }
+
 
             }
         });

@@ -7,7 +7,7 @@
     android:layout_margin="8dp"
     android:padding="6dp"
     app:cardUseCompatPadding="true"
-    app:cardCornerRadius="3dp"
+    app:cardCornerRadius="0dp"
     >
         <ImageView
             android:id="@+id/ivImage"
