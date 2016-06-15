@@ -16,6 +16,7 @@ import com.cky.rx.adapter.SearchResultListAdapter;
 import com.cky.rx.model.BookItemToShow;
 import com.cky.rx.network.Network;
 import com.cky.rx.util.SearchBookResultToItemsMapper;
+import com.cky.rx.widget.DividerLine;
 
 import java.util.List;
 
@@ -94,6 +95,11 @@ public class SearchActivity extends BaseActivity {
 
         mSearchView.setSearchFocused(true);
         //mSearchView.open(true);
+
+        DividerLine dividerLine = new DividerLine(DividerLine.VERTICAL);
+        dividerLine.setSize(2);
+        dividerLine.setColor(0xFFDDDDDD);
+        rvSearchResult.addItemDecoration(dividerLine);
         rvSearchResult.setLayoutManager(new GridLayoutManager(SearchActivity.this, 1));
         rvSearchResult.setAdapter(mSearchResultListAdapter);
         mSearchResultListAdapter.setOnItemClickListener(new SearchResultListAdapter.OnRecyclerViewItemClickListener() {
