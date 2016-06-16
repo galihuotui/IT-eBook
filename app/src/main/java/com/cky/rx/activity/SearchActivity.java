@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
@@ -40,6 +41,8 @@ public class SearchActivity extends BaseActivity {
     TextView tvLoadError;
     @Bind(R.id.tv_load_empty)
     TextView tvLoadEmpty;
+    @Bind(R.id.progressBar)
+    ProgressBar pbLoading;
 
     private SearchResultListAdapter mSearchResultListAdapter = new SearchResultListAdapter(this);
 
@@ -58,6 +61,7 @@ public class SearchActivity extends BaseActivity {
         @Override
         public void onError(Throwable e) {
             //Toast.makeText(SearchActivity.this, String.valueOf(e.getMessage()), Toast.LENGTH_SHORT).show();
+            hideProgressBar();
             tvLoadError.setVisibility(View.VISIBLE);
             tvLoadEmpty.setVisibility(View.GONE);
         }
@@ -65,6 +69,7 @@ public class SearchActivity extends BaseActivity {
         @Override
         public void onNext(List<BookItemToShow> bookItemToShows) {
             //Toast.makeText(SearchActivity.this, String.valueOf(bookItemToShows.size()), Toast.LENGTH_SHORT).show();
+            hideProgressBar();
             mSearchResultListAdapter.setItems(bookItemToShows);
         }
     };
@@ -76,7 +81,7 @@ public class SearchActivity extends BaseActivity {
                 .doOnSubscribe(new Action0() {
                     @Override
                     public void call() {
-
+                       showProgressBar();
                     }
                 })
                 .map(SearchBookResultToItemsMapper.getInstance())
@@ -160,6 +165,35 @@ public class SearchActivity extends BaseActivity {
                 //Toast.makeText(SearchActivity.this, currentQuery, Toast.LENGTH_SHORT).show();
                 search(currentQuery);
                 //throw new RuntimeException("test crash handler");
+            }
+        });
+
+    }
+
+    private void showProgressBar() {
+        SearchActivity.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (pbLoading.getVisibility() == View.GONE) {
+                    pbLoading.setVisibility(View.VISIBLE);
+                }
+                if (rvSearchResult.getVisibility() == View.VISIBLE) {
+                    rvSearchResult.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
+
+    private void hideProgressBar() {
+        SearchActivity.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (pbLoading.getVisibility() == View.VISIBLE) {
+                    pbLoading.setVisibility(View.GONE);
+                }
+                if (rvSearchResult.getVisibility() == View.GONE) {
+                    rvSearchResult.setVisibility(View.VISIBLE);
+                }
             }
         });
 
