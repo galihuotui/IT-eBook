@@ -29,6 +29,14 @@ public class SearchBookResultToItemsMapper implements Func1<SearchBookResult, Li
         if (!searchBookResult.Total.equals("0")) {
             List<BookItem> bookItemsOriginal = searchBookResult.Books;
             String pageIndex = searchBookResult.Page;
+            Boolean isExtraPage = (Integer.valueOf(searchBookResult.Total)%10 != 0 ? true : false);
+            String totalPage = null;
+            if (isExtraPage) {
+                totalPage = String.valueOf((Integer.valueOf(searchBookResult.Total) / 10) + 1);
+            } else {
+                totalPage = String.valueOf((Integer.valueOf(searchBookResult.Total) / 10));
+            }
+
             List<BookItemToShow> items = new ArrayList<>(bookItemsOriginal.size());
 
             for (BookItem bookItem : bookItemsOriginal) {
@@ -39,6 +47,7 @@ public class SearchBookResultToItemsMapper implements Func1<SearchBookResult, Li
                 item.desc = bookItem.Description;
                 item.title = bookItem.Title;
                 item.index = pageIndex;
+                item.totalPage = totalPage;
                 items.add(item);
             }
 

@@ -9,4 +9,5 @@ public class BookItemToShow {
     public String title;
     public String desc;
     public String index;
+    public String totalPage;
 }

@@ -103,7 +103,13 @@ public class SearchResultListAdapter extends RecyclerView.Adapter {
             viewHolder.tvTitle.setText(item.title);
         }
         if (position == books.size() && holder.getItemViewType() == TYPE_FOOTER) {
-
+            ItemViewHolder viewHolder = (ItemViewHolder) holder;
+            BookItemToShow item = books.get(books.size()-1);
+            if (item.index.equals(item.totalPage)) {
+                viewHolder.tvLoadMore.setText(mContext.getString(R.string.no_more));
+            } else {
+                viewHolder.tvLoadMore.setText(mContext.getString(R.string.get_more));
+            }
         }
 
 
@@ -128,14 +134,14 @@ public class SearchResultListAdapter extends RecyclerView.Adapter {
 
         ImageView ivImage;
         TextView tvTitle;
-        Button btnLoadMore;
+        TextView tvLoadMore;
         public ItemViewHolder(View itemView, int viewType) {
             super(itemView);
             if (viewType == TYPE_NORMAL) {
                 ivImage = (ImageView) itemView.findViewById(R.id.ivImage);
                 tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
             } else if (viewType == TYPE_FOOTER) {
-                btnLoadMore = (Button) itemView.findViewById(R.id.btn_load_more);
+                tvLoadMore = (TextView) itemView.findViewById(R.id.tv_load_more);
             }
 
         }

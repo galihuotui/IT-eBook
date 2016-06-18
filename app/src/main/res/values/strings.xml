@@ -81,4 +81,5 @@
     <string name="activity_not_found">未找到打开该文件的应用</string>
     <string name="already_add_to_download">这本书正在下载哦</string>
     <string name="get_more">查看更多</string>
+    <string name="no_more">没有更多了</string>
 </resources>

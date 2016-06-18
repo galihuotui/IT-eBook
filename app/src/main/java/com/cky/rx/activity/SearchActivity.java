@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -37,40 +39,53 @@ public class SearchActivity extends BaseActivity {
     FloatingSearchView mSearchView;
     @Bind(R.id.search_results_list)
     RecyclerView rvSearchResult;
-    @Bind(R.id.tv_load_error)
-    TextView tvLoadError;
     @Bind(R.id.tv_load_empty)
     TextView tvLoadEmpty;
     @Bind(R.id.progressBar)
     ProgressBar pbLoading;
+
+    private int page_index = 1;
+    private int total_page = -1;
+    private String query_key = "";
 
     private SearchResultListAdapter mSearchResultListAdapter = new SearchResultListAdapter(this);
 
     Observer<List<BookItemToShow>> observer = new Observer<List<BookItemToShow>>() {
         @Override
         public void onCompleted() {
+            Log.d(TAG, "onCompleted");
             if (mSearchResultListAdapter.getItems() == null || mSearchResultListAdapter.getItems().size() == 0) {
-                tvLoadError.setVisibility(View.GONE);
                 tvLoadEmpty.setVisibility(View.VISIBLE);
             } else {
                 tvLoadEmpty.setVisibility(View.GONE);
-                tvLoadError.setVisibility(View.GONE);
+                if (total_page == -1) {
+                    total_page = Integer.valueOf(mSearchResultListAdapter.getItems().get(0).totalPage);
+                    Log.d(TAG, "总页数 -> " + total_page);
+                }
+
             }
         }
 
         @Override
         public void onError(Throwable e) {
             //Toast.makeText(SearchActivity.this, String.valueOf(e.getMessage()), Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "onError");
             hideProgressBar();
-            tvLoadError.setVisibility(View.VISIBLE);
-            tvLoadEmpty.setVisibility(View.GONE);
+            tvLoadEmpty.setVisibility(View.VISIBLE);
         }
 
         @Override
         public void onNext(List<BookItemToShow> bookItemToShows) {
-            //Toast.makeText(SearchActivity.this, String.valueOf(bookItemToShows.size()), Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "onNext -> " + bookItemToShows.size());
             hideProgressBar();
-            mSearchResultListAdapter.setItems(bookItemToShows);
+            if (mSearchResultListAdapter.getItems() == null) {
+                mSearchResultListAdapter.setItems(bookItemToShows);
+
+            } else {
+                mSearchResultListAdapter.getItems().addAll(bookItemToShows);
+                mSearchResultListAdapter.notifyDataSetChanged();
+            }
+
         }
     };
 
@@ -81,7 +96,30 @@ public class SearchActivity extends BaseActivity {
                 .doOnSubscribe(new Action0() {
                     @Override
                     public void call() {
+                       //tvLoadEmpty.setVisibility(View.GONE);
+                       //tvLoadError.setVisibility(View.GONE);
                        showProgressBar();
+                    }
+                })
+                .map(SearchBookResultToItemsMapper.getInstance())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+
+    }
+    private void getNextPage() {
+
+        //String cueeentIndex = adapter.getItems().get(adapter.getItemCount() - 1).index;
+
+        //String nextIndex = String.valueOf(Integer.valueOf(cueeentIndex) + 1);
+        //Log.d(TAG, "next index --->" + nextIndex);
+        //Log.d(TAG, "next index --->" + String.valueOf(++page_index));
+        subscription =  Network.getIteBooksApi()
+                .getBooksByPage(query_key, String.valueOf(page_index))
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        //showProgressBar();
                     }
                 })
                 .map(SearchBookResultToItemsMapper.getInstance())
@@ -107,6 +145,7 @@ public class SearchActivity extends BaseActivity {
         rvSearchResult.addItemDecoration(dividerLine);
         rvSearchResult.setLayoutManager(new GridLayoutManager(SearchActivity.this, 1));
         rvSearchResult.setAdapter(mSearchResultListAdapter);
+        rvSearchResult.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
         mSearchResultListAdapter.setOnItemClickListener(new SearchResultListAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view) {
@@ -114,6 +153,9 @@ public class SearchActivity extends BaseActivity {
                 if (RecyclerView.NO_POSITION != position && mSearchResultListAdapter.getItems().size() != position) {
                     BookDetailActivity2.start(SearchActivity.this, mSearchResultListAdapter.getItemData(position).id);
                 } else if (RecyclerView.NO_POSITION != position && mSearchResultListAdapter.getItems().size() == position) {
+                    if (++page_index <= total_page) {
+                        getNextPage();
+                    }
 
                 }
 
@@ -163,7 +205,19 @@ public class SearchActivity extends BaseActivity {
             @Override
             public void onSearchAction(String currentQuery) {
                 //Toast.makeText(SearchActivity.this, currentQuery, Toast.LENGTH_SHORT).show();
-                search(currentQuery);
+                if (!currentQuery.trim().equals("")) {
+                    if (mSearchResultListAdapter.getItems()!= null) {
+                        mSearchResultListAdapter.setItems(null);
+                        mSearchResultListAdapter.notifyDataSetChanged();
+                        page_index = 1;
+                        total_page = -1;
+                    }
+                    query_key = currentQuery;
+                    Log.d(TAG, "当前搜索 -> " + currentQuery);
+                    tvLoadEmpty.setVisibility(View.GONE);
+                    search(currentQuery);
+                }
+
                 //throw new RuntimeException("test crash handler");
             }
         });
