@@ -60,7 +60,6 @@ dependencies {
     compile libs.androidanimations
 
     compile libs.greenDao
-    compile libs.searchViewlib
     compile libs.appcompat
     //compile libs.flexibledivider
 
